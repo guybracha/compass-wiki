@@ -92,7 +92,7 @@ export default function TimelinePage() {
 
       {/* Timeline */}
       <div className="relative">
-        <div ref={lineRef} className="absolute left-6 top-0 bottom-0 w-px bg-white/10" style={{ scaleY: 0 }} />
+        <div ref={lineRef} className="absolute left-6 top-0 bottom-0 w-px bg-white/10" style={{ transform: 'scaleY(0)', transformOrigin: 'top' }} />
         <div ref={entriesRef} className="space-y-8">
           {historyList.map((entry, i) => (
             <div key={i} data-entry className="relative pl-16" style={{ opacity: 0 }}>
