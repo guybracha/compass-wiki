@@ -2,7 +2,7 @@ export interface PrimeChild {
   name: string;
   side: 'Hero' | 'Villain';
   power: string;
-  tags: string[];
+  tags: readonly string[];
   img: string;
   slug: string;
   primeSync?: number;
