@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#1a1a1a"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#ffffff08" stroke-width="1"/>
+  </pattern>
+  <rect width="200" height="200" fill="url(#grid)"/>
+
+  <!-- Diamond / compass shape -->
+  <polygon points="100,40 140,100 100,160 60,100" fill="none" stroke="#ffffff18" stroke-width="1.5"/>
+  <polygon points="100,58 122,100 100,142 78,100" fill="none" stroke="#ffffff10" stroke-width="1"/>
+
+  <!-- Question mark silhouette -->
+  <circle cx="100" cy="72" r="14" fill="none" stroke="#ffffff25" stroke-width="2"/>
+  <path d="M93 68 Q93 58 100 58 Q107 58 107 65 Q107 72 100 75 L100 82" fill="none" stroke="#ffffff35" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="100" cy="89" r="2.5" fill="#ffffff35"/>
+
+  <!-- Label area -->
+  <rect x="20" y="150" width="160" height="36" rx="4" fill="#ffffff06"/>
+
+  <!-- "?" large text -->
+  <text x="100" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#ffffff20">?</text>
+
+  <!-- Text -->
+  <text x="100" y="166" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#ffffff40" letter-spacing="1.5">NO IMAGE</text>
+  <text x="100" y="179" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7.5" fill="#ffffff25" letter-spacing="0.5">CHARACTER NOT FOUND</text>
+</svg>
