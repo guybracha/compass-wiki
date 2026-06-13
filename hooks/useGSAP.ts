@@ -46,10 +46,10 @@ export function useCounterAnim(value: number, active: boolean) {
 
   useEffect(() => {
     if (!active || !ref.current) return;
-    let raf: number;
+    let tween: { kill: () => void } | null = null;
     import('gsap').then(({ gsap }) => {
       const obj = { val: 0 };
-      gsap.to(obj, {
+      tween = gsap.to(obj, {
         val: value,
         duration: 1,
         ease: 'power1.out',
@@ -58,7 +58,7 @@ export function useCounterAnim(value: number, active: boolean) {
         },
       });
     });
-    return () => cancelAnimationFrame(raf);
+    return () => { tween?.kill(); };
   }, [value, active]);
 
   return ref;
