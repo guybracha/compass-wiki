@@ -4,9 +4,32 @@ import WikiNav from "@/components/WikiNav";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Analytics } from "@vercel/analytics/next";
 
+const BASE_URL = 'https://compass-wiki.vercel.app';
+
 export const metadata: Metadata = {
-  title: "Compass World Wiki",
-  description: "The official wiki for the Compass World superhero universe — characters, events, locations, and history.",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'Compass World Wiki',
+    template: '%s | Compass World Wiki',
+  },
+  description: 'The official wiki for the Compass World superhero universe — characters, events, locations, and history.',
+  keywords: ['Compass World', 'superhero', 'wiki', 'Prime-Children', 'Compass Alliance'],
+  authors: [{ name: 'Guy Bracha' }],
+  openGraph: {
+    type: 'website',
+    siteName: 'Compass World Wiki',
+    title: 'Compass World Wiki',
+    description: 'The official wiki for the Compass World superhero universe — characters, events, locations, and history.',
+    url: BASE_URL,
+    images: [{ url: '/contents/gallery/UniteCol-min.webp', width: 1200, height: 630, alt: 'Compass World Wiki' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Compass World Wiki',
+    description: 'The official wiki for the Compass World superhero universe.',
+    images: ['/contents/gallery/UniteCol-min.webp'],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
