@@ -106,6 +106,7 @@ function toSlug(name: string) {
 
 export const primeChildren: PrimeChild[] = raw.map(r => ({
   ...r,
+  tags: [...r.tags] as string[],
   side: r.side as 'Hero' | 'Villain',
   slug: toSlug(r.name),
   ...(profiles[r.name] || {}),
