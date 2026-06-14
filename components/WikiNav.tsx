@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import ThemePicker from './ThemePicker';
+import GlobalSearch from './GlobalSearch';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -47,7 +48,8 @@ export default function WikiNav() {
           })}
         </div>
 
-        <div className="ml-auto hidden lg:flex">
+        <div className="ml-auto hidden lg:flex items-center gap-2">
+          <GlobalSearch />
           <ThemePicker />
         </div>
 
@@ -78,7 +80,8 @@ export default function WikiNav() {
               </Link>
             );
           })}
-          <div className="pt-3 border-t border-white/5">
+          <div className="pt-3 border-t border-white/5 flex flex-col gap-3">
+            <GlobalSearch />
             <ThemePicker />
           </div>
         </div>
