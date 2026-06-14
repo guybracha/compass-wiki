@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import WikiNav from "@/components/WikiNav";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Compass World Wiki",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer className="border-t border-white/5 py-6 text-center text-sm text-gray-500">
             <p>Compass World Wiki &copy; {new Date().getFullYear()} &mdash; Created by Guy Bracha</p>
           </footer>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
