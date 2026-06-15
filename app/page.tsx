@@ -5,6 +5,7 @@ import { eventsCatalog } from '@/lib/events';
 import { primeChildren } from '@/lib/primeChildren';
 import HomeHero from '@/components/HomeHero';
 import GSAPReveal from '@/components/GSAPReveal';
+import RecentlyVisited from '@/components/RecentlyVisited';
 
 const sections = [
   { href: '/characters', label: 'Characters', desc: `${heroes.length + villains.length}+ profiles`, icon: '⚡' },
@@ -59,6 +60,11 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
+      </GSAPReveal>
+
+      {/* Recently Visited */}
+      <GSAPReveal className="max-w-5xl mx-auto px-4 pb-8" delay={0.08}>
+        <RecentlyVisited />
       </GSAPReveal>
 
       {/* Lore */}

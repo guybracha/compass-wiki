@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Character, allCharacters } from '@/lib/characters';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const statLabels = [
   { key: 'strength' as const, label: 'Strength', color: '#ef4444' },
@@ -79,14 +80,11 @@ export default function CharacterDetailClient({ c }: { c: Character }) {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
-        <Link href="/" className="hover:text-white transition-colors" style={{ color: 'var(--accent)' } as React.CSSProperties} onMouseLeave={e => (e.target as HTMLElement).style.color = ''}>Home</Link>
-        <span>/</span>
-        <Link href="/characters" className="hover:text-white transition-colors" style={{ color: 'var(--accent)' } as React.CSSProperties}>Characters</Link>
-        <span>/</span>
-        <span className="text-white">{c.superName}</span>
-      </nav>
+      <Breadcrumbs crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Characters', href: '/characters' },
+        { label: c.superName },
+      ]} />
 
       <div className="grid lg:grid-cols-[1fr_300px] gap-8">
         {/* Main content */}

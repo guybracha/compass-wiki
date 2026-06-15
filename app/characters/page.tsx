@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { allCharacters, Character } from '@/lib/characters';
 
 const categories = ['All', 'Heroes', 'Villains', 'Compass Alliance', 'Solo', 'Prime-Children'];
@@ -14,6 +15,7 @@ const categoryColors: Record<string, string> = {
 export default function CharactersPage() {
   const [filter, setFilter] = useState('All');
   const [search, setSearch] = useState('');
+  const router = useRouter();
   const headerRef = useRef<HTMLDivElement>(null);
   const filtersRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -69,6 +71,18 @@ export default function CharactersPage() {
       </div>
 
       <div ref={filtersRef} className="glass p-4 mb-8 flex flex-wrap gap-3 items-center" style={{ opacity: 0 }}>
+        <button
+          onClick={() => {
+            const r = allCharacters[Math.floor(Math.random() * allCharacters.length)];
+            router.push(`/characters/${r.slug}`);
+          }}
+          className="px-3 py-1.5 rounded-full text-xs font-semibold transition-colors flex items-center gap-1.5"
+          style={{ background: 'var(--accent-soft)', color: 'var(--accent)', border: '1px solid var(--accent)' }}
+          title="Go to a random character"
+        >
+          🎲 Random
+        </button>
+        <div className="w-px h-4 bg-white/10" />
         <div className="flex flex-wrap gap-2">
           {categories.map(c => (
             <button key={c} onClick={() => setFilter(c)}
@@ -114,7 +128,7 @@ function CharacterCard({ character: c }: { character: Character }) {
     <Link href={`/characters/${c.slug}`} data-card className="group block" style={{ opacity: 0 }}>
       <div className="rounded-xl overflow-hidden border-2 border-transparent transition-all duration-200 group-hover:scale-105 group-hover:border-white/30">
         <div className="aspect-square bg-gray-900 relative">
-          <img src={c.img} alt={c.superName} className="w-full h-full object-cover object-top"
+          <img src={c.img} alt={`${c.superName} — ${c.category} ${c.type} in Compass World`} className="w-full h-full object-cover object-top"
             onError={e => { (e.target as HTMLImageElement).src = '/character-not-found.svg'; }} />
           {c.type === 'villain' && (
             <div className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded font-bold">V</div>

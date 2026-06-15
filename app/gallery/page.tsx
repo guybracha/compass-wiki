@@ -106,7 +106,7 @@ export default function GalleryPage() {
             onClick={() => setLightbox({ src: item.src, title: item.title, caption: item.caption })}
           >
             <div className="aspect-square overflow-hidden">
-              <img src={item.src} alt={item.title}
+              <img src={item.src} alt={`${item.title}${item.caption ? ' — ' + item.caption : ''} | Compass World artwork`}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 onError={e => { (e.target as HTMLImageElement).src = '/character-not-found.svg'; }} />
             </div>

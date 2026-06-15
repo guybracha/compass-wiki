@@ -3,6 +3,7 @@ import "./globals.css";
 import WikiNav from "@/components/WikiNav";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Analytics } from "@vercel/analytics/next";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const BASE_URL = 'https://compass-wiki.vercel.app';
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p>Compass World Wiki &copy; {new Date().getFullYear()} &mdash; Created by Guy Bracha</p>
           </footer>
           <Analytics />
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>

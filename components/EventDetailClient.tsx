@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { WikiEvent } from '@/lib/events';
 import { allCharacters } from '@/lib/characters';
+import { AutoLink } from '@/lib/autoLink';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function EventDetailClient({ ev }: { ev: WikiEvent }) {
   const bannerRef = useRef<HTMLDivElement>(null);
@@ -72,13 +74,11 @@ export default function EventDetailClient({ ev }: { ev: WikiEvent }) {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
-        <Link href="/" className="hover:text-white transition-colors" style={{ color: 'var(--accent)' } as React.CSSProperties}>Home</Link>
-        <span>/</span>
-        <Link href="/events" className="hover:text-white transition-colors" style={{ color: 'var(--accent)' } as React.CSSProperties}>Events</Link>
-        <span>/</span>
-        <span className="text-white">{ev.title}</span>
-      </nav>
+      <Breadcrumbs crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Events', href: '/events' },
+        { label: ev.title },
+      ]} />
 
       {/* Banner */}
       <div ref={bannerRef} className="relative h-56 md:h-72 rounded-2xl overflow-hidden mb-8">
@@ -116,7 +116,7 @@ export default function EventDetailClient({ ev }: { ev: WikiEvent }) {
             <h2 className="text-base font-bold mb-3 flex items-center gap-2" style={{ color: s.color }}>
               <span>{s.icon}</span> {s.label}
             </h2>
-            <p className="text-gray-300 leading-relaxed">{s.text}</p>
+            <p className="text-gray-300 leading-relaxed"><AutoLink text={s.text} /></p>
           </div>
         ))}
       </div>
